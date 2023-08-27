@@ -1,12 +1,18 @@
 <script>
 	import '../app.postcss';
 	import { page } from '$app/stores';
-	import { blur } from 'svelte/transition';
-	import { Navbar, NavBrand, NavLi, NavUl, NavHamburger, DarkMode, Popover } from 'flowbite-svelte';
+	import { Navbar, NavBrand, NavLi, NavUl, NavHamburger, DarkMode } from 'flowbite-svelte';
+	import { Icon } from 'flowbite-svelte-icons';
+	import { goto } from '$app/navigation';
 	$: activeUrl = $page.url.pathname;
+	const start = () => {
+		// Generate a game id
+		const id = 18;
+		goto(`/game/${id}`);
+	};
 </script>
 
-<Navbar let:hidden let:toggle>
+<Navbar let:hidden let:toggle color="none">
 	<div class="flex">
 		<DarkMode />
 		<NavBrand href="/">
@@ -17,18 +23,14 @@
 	</div>
 	<NavHamburger on:click={toggle} />
 	<NavUl {activeUrl} {hidden}>
-		<NavLi href="/start">Start</NavLi>
-		<Popover arrow={false} placement="bottom" title="Start" transition={blur}
-			>Start a new poker session</Popover
+		<NavLi class="cursor-pointer flex gap-x-2" on:click={start}
+			><Icon name="plus-solid" />start</NavLi
 		>
-		<NavLi href="/join">Join</NavLi>
-		<Popover arrow={false} placement="bottom" title="Join" transition={blur}
-			>Join an existing poker session</Popover
+		<NavLi href="https://naveenkumar.vercel.app/" target="_blank" class="flex gap-x-2"
+			><Icon name="code-solid" />author</NavLi
 		>
-		<NavLi href="https://naveenkumar.vercel.app/" target="_blank">author</NavLi>
 	</NavUl>
 </Navbar>
-
 <div class="flex flex-col justify-center items-center">
 	<slot />
 </div>

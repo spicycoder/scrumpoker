@@ -1,8 +1,12 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
-	import { blur } from 'svelte/transition';
-	import { Blockquote, ButtonGroup, Card, GradientButton, Popover } from 'flowbite-svelte';
+	import { Blockquote, Button, ButtonGroup, Card, GradientButton, Popover } from 'flowbite-svelte';
 	import { Icon } from 'flowbite-svelte-icons';
+	const start = () => {
+		// Generate a game id
+		const id = 18;
+		goto(`/game/${id}`);
+	};
 </script>
 
 <Card class="mt-4" size="lg">
@@ -19,15 +23,10 @@
 			members and help you reach a consensus. Scrum Poker is a great way to improve the accuracy of your
 			estimates and make better decisions about your project.
 		</Blockquote>
-		<ButtonGroup class="mt-4">
-			<GradientButton pill class="w-24" on:click={() => goto('/start')}>Start</GradientButton>
-			<Popover title="Start" arrow={false} placement="bottom" transition={blur}
-				>Start a new poker session</Popover
+		<div class="flex mt-4 gap-x-4">
+			<Button size="xl" id="start" class="gap-x-2" on:click={start}
+				><Icon name="plus-solid" />start</Button
 			>
-			<GradientButton pill class="w-24" on:click={() => goto('join')}>Join</GradientButton>
-			<Popover title="Join" arrow={false} placement="bottom" transition={blur}
-				>Join an existing poker session</Popover
-			>
-		</ButtonGroup>
+		</div>
 	</div>
 </Card>
