@@ -24,7 +24,7 @@
 			estimates and make better decisions about your project.
 		</Blockquote>
 		<div class="flex mt-4 gap-x-4">
-			<Button size="xl" id="start" class="gap-x-2" on:click={start}
+			<Button pill size="xl" id="start" class="gap-x-2" on:click={start}
 				><Icon name="plus-solid" />start</Button
 			>
 		</div>

@@ -10,9 +10,11 @@
 		FloatingLabelInput,
 		Heading,
 		Hr,
+		Input,
 		ListPlaceholder,
 		Modal
 	} from 'flowbite-svelte';
+	import { Icon } from 'flowbite-svelte-icons';
 	import { onMount } from 'svelte';
 	let collectName = false;
 	let name: string = '';
@@ -31,6 +33,10 @@
 	});
 </script>
 
+<div class="flex md:flex-row flex-col items-center justify-center mb-4 gap-2">
+	<Input type="text" value={$page.url} class="rounded-full w-64 text-center" />
+	<Button pill class="gap-x-2" color="alternative"><Icon name="share-nodes-solid" />Share</Button>
+</div>
 {#if !name}
 	<Card title="Refersh to enter your name" class="my-4">
 		<Heading tag="h4" class="text-center my-2">Required user name</Heading>
